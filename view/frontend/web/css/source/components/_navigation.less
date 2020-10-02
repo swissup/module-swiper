@@ -1,0 +1,44 @@
+& when (@media-common = true) {
+    [class] {
+        &.swiper-button {
+            &-prev,
+            &-next {
+                .lib-css(background-size, @swiper-button__background-size);
+                .lib-css(height, @swiper-button__height);
+                .lib-css(width, @swiper-button__width);
+                .lib-css(margin-top, @swiper-button__margin-top);
+
+                .lib-css(border-radius, @swiper-button__border-radius);
+                .lib-css(background-color, @swiper-button__background-color);
+                .lib-css(box-shadow, @swiper-button__box-shadow);
+            }
+        }
+    }
+}
+
+//
+//  DESKTOP
+//
+//  We assume that navigation buttons animation on hover required for desktop only
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .swiper-button {
+        &-prev,
+        &-next {
+            .lib-css(transition, @swiper-button__transition);
+
+            &:hover {
+                .lib-css(filter, @swiper-button-hover__filter);
+                .lib-css(transform, @swiper-button-hover__transform);
+            }
+        }
+
+        &-black:hover {
+            .lib-css(filter, @swiper-button-black-hover__filter);
+        }
+
+        &-white:hover {
+            .lib-css(filter, @swiper-button-white-hover__filter);
+        }
+    }
+}
+

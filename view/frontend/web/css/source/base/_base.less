@@ -1,0 +1,26 @@
+& when (@media-common = true) {
+    div.swiper-container { // override original swiper styles
+        text-align: center;
+
+        &-horizontal > .swiper-pagination-bullets {
+            bottom: 0.4em;
+        }
+
+        .swiper-slide {
+            height: auto;
+        }
+    }
+
+    // Hide slide description when lazy loaded image is not preloaded.
+    .swiper-lazy-preloader ~ * {
+        visibility: hidden;
+    }
+
+    // FIXES
+    .swiper-slide {
+        img {
+            vertical-align: top; /* http://stackoverflow.com/questions/17505418/link-wrapped-around-image-makes-div-slightly-taller */
+            height: auto;
+        }
+    }
+}
