@@ -12,6 +12,32 @@
                 .lib-css(background-color, @swiper-button__background-color);
                 .lib-css(box-shadow, @swiper-button__box-shadow);
             }
+
+            &-prev {
+                .lib-css(background-image, @swiper-button-prev__background-image);
+                .lib-css(left, @swiper-button-prev__left);
+
+                &.swiper-button-black {
+                    .lib-css(background-image, @swiper-button-black-prev__background-image);
+                }
+
+                &.swiper-button-white {
+                    .lib-css(background-image, @swiper-button-white-prev__background-image);
+                }
+            }
+
+            &-next {
+                .lib-css(background-image, @swiper-button-next__background-image);
+                .lib-css(right, @swiper-button-next__right);
+
+                &.swiper-button-black {
+                    .lib-css(background-image, @swiper-button-black-next__background-image);
+                }
+
+                &.swiper-button-white {
+                    .lib-css(background-image, @swiper-button-white-next__background-image);
+                }
+            }
         }
     }
 }
