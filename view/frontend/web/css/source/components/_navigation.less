@@ -13,7 +13,8 @@
                 .lib-css(box-shadow, @swiper-button__box-shadow);
             }
 
-            &-prev {
+            &-prev,
+            .swiper-container-rtl &-next {
                 .lib-css(background-image, @swiper-button-prev__background-image);
                 .lib-css(left, @swiper-button-prev__left);
 
@@ -26,7 +27,8 @@
                 }
             }
 
-            &-next {
+            &-next,
+            .swiper-container-rtl &-prev {
                 .lib-css(background-image, @swiper-button-next__background-image);
                 .lib-css(right, @swiper-button-next__right);
 
