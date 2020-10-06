@@ -4,6 +4,9 @@ define([
 ], function ($, Swiper) {
     'use strict';
 
+    var navigationHtml = '<div class="swiper-button-prev swiper-button-black"></div>' +
+                         '<div class="swiper-button-next swiper-button-black"></div>';
+
     /**
      * Allows to wrap any content into
      *
@@ -22,16 +25,30 @@ define([
      * @param  {Element} element
      */
     return function (options, element) {
-        var container = options.target.container ? options.target.container : options.target;
+        var container,
+            wrapper,
+            target;
 
         // Add swiper container class
-        $(container, element).addClass('swiper-container');
+        target = options.target.container ? options.target.container : options.target;
+        container = $(target, element).addClass('swiper-container');
         // Add wrapper class for slides
-        $(container, element).children(options.target.wrapper).addClass('swiper-wrapper');
+        wrapper = container.children(options.target.wrapper).addClass('swiper-wrapper');
         // Add slide class to slides
-        $(container, element).children(options.target.wrapper).children(options.target.slide).addClass('swiper-slide');
+        wrapper.children(options.target.slide).addClass('swiper-slide');
+
+        // Add navigation buttons
+        container.append(navigationHtml);
 
         // Initialize swiper
-        new Swiper(options, $(container, element));
+        new Swiper(
+            $.extend({
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                }
+            }, options),
+            container
+        );
     };
 });
