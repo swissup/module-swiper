@@ -3489,7 +3489,8 @@
     function onReady() {
       if (callback) { callback(); }
     }
-    if (!imageEl.complete || !checkForComplete) {
+    const isPicture = $(imageEl).parent('picture')[0];
+    if (!isPicture && (!imageEl.complete || !checkForComplete)) {
       if (src) {
         image = new win.Image();
         image.onload = onReady;
@@ -6477,6 +6478,7 @@
         var src = $imageEl.attr('data-src');
         var srcset = $imageEl.attr('data-srcset');
         var sizes = $imageEl.attr('data-sizes');
+        const $pictureEl = $imageEl.parent('picture');
 
         swiper.loadImage($imageEl[0], (src || background), srcset, sizes, false, function () {
           if (typeof swiper === 'undefined' || swiper === null || !swiper || (swiper && !swiper.params) || swiper.destroyed) { return; }
@@ -6491,6 +6493,16 @@
             if (sizes) {
               $imageEl.attr('sizes', sizes);
               $imageEl.removeAttr('data-sizes');
+            }
+            if ($pictureEl.length) {
+              $pictureEl.children('source').each(function (sourceIndex, sourceEl) {
+                const $source = $(sourceEl);
+
+                if ($source.attr('data-srcset')) {
+                  $source.attr('srcset', $source.attr('data-srcset'));
+                  $source.removeAttr('data-srcset');
+                }
+              });
             }
             if (src) {
               $imageEl.attr('src', src);
