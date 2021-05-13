@@ -6,6 +6,8 @@
                          '<div class="swiper-button-next swiper-button-black"></div>';
 
     breeze.widget('swiper', {
+        component: 'Swissup_Swiper/js/swiper',
+
         /** [create description] */
         create: function () {
             var target, container;
@@ -50,9 +52,5 @@
                 swiper.update();
             }
         }
-    });
-
-    $(document).on('breeze:mount:Swissup_Swiper/js/swiper', function (event, data) {
-        $(data.el).swiper(data.settings);
     });
 })();
