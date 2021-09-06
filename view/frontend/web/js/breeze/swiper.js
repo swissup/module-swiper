@@ -1,11 +1,11 @@
-/* global breeze Swiper */
+/* global Swiper */
 (function () {
     'use strict';
 
     var navigationHtml = '<div class="swiper-button-prev swiper-button-black"></div>' +
                          '<div class="swiper-button-next swiper-button-black"></div>';
 
-    breeze.widget('swiper', {
+    $.widget('swiper', {
         component: 'Swissup_Swiper/js/swiper',
 
         /** [create description] */
