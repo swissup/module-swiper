@@ -53,4 +53,8 @@
             }
         }
     });
+
+    $(document).on('breeze:mount:Swissup_Swiper/js/swiper-wrapper', (event, data) => {
+        $(data.el).swiper(data.settings);
+    });
 })();
