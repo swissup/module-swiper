@@ -41,7 +41,7 @@
                 });
             }
 
-            new Swiper(this.element, this.options);
+            this.onReveal(() => new Swiper(this.element, this.options));
         },
 
         /** [updateSwiper description] */
