@@ -1,4 +1,11 @@
 & when (@critical) {
+    .swiper-container {
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
     .swiper-wrapper {
         position: relative;
         width: 100%;
@@ -6,5 +13,15 @@
         z-index: 1;
         display: flex;
         box-sizing: content-box;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+        position: absolute;
+    }
+    .swiper-button-prev {
+        .left(10px);
+    }
+    .swiper-button-next {
+        .right(10px);
     }
 }
