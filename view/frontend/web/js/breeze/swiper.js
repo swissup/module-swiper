@@ -41,7 +41,11 @@
                 });
             }
 
-            this.onReveal(() => new Swiper(this.element, this.options));
+            this.onReveal(() => {
+                require(['Swissup_Swiper/lib/swiper'], () => {
+                    new Swiper(this.element, this.options);
+                });
+            });
         },
 
         /** [updateSwiper description] */
