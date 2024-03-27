@@ -15,6 +15,9 @@
                             </item>
                             <item name="Swissup_Swiper/js/swiper" xsi:type="array">
                                 <item name="path" xsi:type="string">Swissup_Swiper/js/breeze/swiper</item>
+                                <item name="export" xsi:type="array">
+                                    <item name="swiper" xsi:type="string">swiper</item>
+                                </item>
                                 <item name="load" xsi:type="array">
                                     <item name="onReveal" xsi:type="array">
                                         <item name="0" xsi:type="string">[data-mage-init*="Swissup_Swiper/js/swiper"]</item>
