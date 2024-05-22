@@ -21,6 +21,7 @@
                                 <item name="load" xsi:type="array">
                                     <item name="onReveal" xsi:type="array">
                                         <item name="0" xsi:type="string">[data-mage-init*="Swissup_Swiper/js/swiper"]</item>
+                                        <item name="1" xsi:type="string">.swiper-container</item>
                                     </item>
                                 </item>
                             </item>
