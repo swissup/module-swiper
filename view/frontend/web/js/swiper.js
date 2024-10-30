@@ -1,9 +1,12 @@
 define([
     'jquery',
     '../lib/swiper',
+    'mage/translate',
     'Magento_Ui/js/modal/modal' // 2.3.3: create 'jquery-ui-modules/widget' dependency
-], function ($, Swiper) {
+], function ($, Swiper, $t) {
     'use strict';
+
+    var skipId = 1;
 
     $.widget('swissup.swiper', {
         /**
@@ -18,6 +21,10 @@ define([
             }
 
             new Swiper(this.element, this.options);
+
+            if ($(this.element).find('a,button').length) {
+                this.addSkipLink();
+            }
         },
 
         /**
@@ -29,6 +36,15 @@ define([
             if (swiper) {
                 swiper.update();
             }
+        },
+
+        addSkipLink: function () {
+            var skipTpl = `<a href="#swiper-${skipId}-end" class="action skip">${$t('Skip carousel')}</a>`,
+                anchorTpl = `<span id="swiper-${skipId}-end" class="anchor skip"></span>`;
+
+            skipId++;
+            $(this.element).prepend(skipTpl);
+            $(this.element).append(anchorTpl);
         }
     });
 
