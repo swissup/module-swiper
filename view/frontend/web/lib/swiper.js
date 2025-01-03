@@ -503,15 +503,8 @@
     var i;
     if (arguments.length === 1) {
       if (typeof props === 'string') {
-          this[0].computedStyle = this[0].computedStyle || this.styles();
-          return this[0].computedStyle.getPropertyValue(props);
-          /*
-          if (this[0].style) {
-              return this[0].style[props];
-          } else if (this[0].currentStyle) {
-            return this[0].currentStyle[props];
-          }*/
-        return win.getComputedStyle(this[0], null).getPropertyValue(props);
+        this[0].computedStyle = this[0].computedStyle || this.styles();
+        return this[0].computedStyle.getPropertyValue(props);
       } else {
           for (i = 0; i < this.length; i += 1) {
           // eslint-disable-next-line
