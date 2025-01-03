@@ -5216,7 +5216,7 @@
       }
       if ($images.length === 0) { return; }
 
-      setTimeout(() => {
+      Utils.nextTick(function () {
           $images.each(function (imageIndex, imageEl) {
             var $imageEl = $(imageEl);
             $imageEl.addClass(params.loadingClass);
@@ -5274,7 +5274,7 @@
 
             swiper.emit('lazyImageLoad', $slideEl[0], $imageEl[0]);
           });
-      }, 0);
+      });
     },
     load: function load() {
       var swiper = this;
