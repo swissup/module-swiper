@@ -503,15 +503,15 @@
     var i;
     if (arguments.length === 1) {
       if (typeof props === 'string') {
-        if (this[0].style) {
-          return this[0].style[props];
-        } else if (this[0].currentStyle) {
-          return this[0].currentStyle[props];
-        } else {
-          return win.getComputedStyle(this[0], null).getPropertyValue(props);
-        }
+          /*
+          if (this[0].style) {
+              return this[0].style[props];
+          } else if (this[0].currentStyle) {
+            return this[0].currentStyle[props];
+          }*/
+        return win.getComputedStyle(this[0], null).getPropertyValue(props);
       } else {
-        for (i = 0; i < this.length; i += 1) {
+          for (i = 0; i < this.length; i += 1) {
           // eslint-disable-next-line
           for (var prop in props) {
             this[i].style[prop] = props[prop];
