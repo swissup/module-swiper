@@ -5216,63 +5216,65 @@
       }
       if ($images.length === 0) { return; }
 
-      $images.each(function (imageIndex, imageEl) {
-        var $imageEl = $(imageEl);
-        $imageEl.addClass(params.loadingClass);
+      setTimeout(() => {
+          $images.each(function (imageIndex, imageEl) {
+            var $imageEl = $(imageEl);
+            $imageEl.addClass(params.loadingClass);
 
-        var background = $imageEl.attr('data-background');
-        var src = $imageEl.attr('data-src');
-        var srcset = $imageEl.attr('data-srcset');
-        var sizes = $imageEl.attr('data-sizes');
-        const $pictureEl = $imageEl.parent('picture');
+            var background = $imageEl.attr('data-background');
+            var src = $imageEl.attr('data-src');
+            var srcset = $imageEl.attr('data-srcset');
+            var sizes = $imageEl.attr('data-sizes');
+            const $pictureEl = $imageEl.parent('picture');
 
-        swiper.loadImage($imageEl[0], (src || background), srcset, sizes, false, function () {
-          if (typeof swiper === 'undefined' || swiper === null || !swiper || (swiper && !swiper.params) || swiper.destroyed) { return; }
-          if (background) {
-            $imageEl.css('background-image', ("url(\"" + background + "\")"));
-            $imageEl.removeAttr('data-background');
-          } else {
-            if (srcset) {
-              $imageEl.attr('srcset', srcset);
-              $imageEl.removeAttr('data-srcset');
-            }
-            if (sizes) {
-              $imageEl.attr('sizes', sizes);
-              $imageEl.removeAttr('data-sizes');
-            }
-            if ($pictureEl.length) {
-              $pictureEl.children('source').each(function (sourceIndex, sourceEl) {
-                const $source = $(sourceEl);
-
-                if ($source.attr('data-srcset')) {
-                  $source.attr('srcset', $source.attr('data-srcset'));
-                  $source.removeAttr('data-srcset');
+            swiper.loadImage($imageEl[0], (src || background), srcset, sizes, false, function () {
+              if (typeof swiper === 'undefined' || swiper === null || !swiper || (swiper && !swiper.params) || swiper.destroyed) { return; }
+              if (background) {
+                $imageEl.css('background-image', ("url(\"" + background + "\")"));
+                $imageEl.removeAttr('data-background');
+              } else {
+                if (srcset) {
+                  $imageEl.attr('srcset', srcset);
+                  $imageEl.removeAttr('data-srcset');
                 }
-              });
-            }
-            if (src) {
-              $imageEl.attr('src', src);
-              $imageEl.removeAttr('data-src');
-            }
-          }
+                if (sizes) {
+                  $imageEl.attr('sizes', sizes);
+                  $imageEl.removeAttr('data-sizes');
+                }
+                if ($pictureEl.length) {
+                  $pictureEl.children('source').each(function (sourceIndex, sourceEl) {
+                    const $source = $(sourceEl);
 
-          $imageEl.addClass(params.loadedClass).removeClass(params.loadingClass);
-          $slideEl.find(("." + (params.preloaderClass))).remove();
-          if (swiper.params.loop && loadInDuplicate) {
-            var slideOriginalIndex = $slideEl.attr('data-swiper-slide-index');
-            if ($slideEl.hasClass(swiper.params.slideDuplicateClass)) {
-              var originalSlide = swiper.$wrapperEl.children(("[data-swiper-slide-index=\"" + slideOriginalIndex + "\"]:not(." + (swiper.params.slideDuplicateClass) + ")"));
-              swiper.lazy.loadInSlide(originalSlide.index(), false);
-            } else {
-              var duplicatedSlide = swiper.$wrapperEl.children(("." + (swiper.params.slideDuplicateClass) + "[data-swiper-slide-index=\"" + slideOriginalIndex + "\"]"));
-              swiper.lazy.loadInSlide(duplicatedSlide.index(), false);
-            }
-          }
-          swiper.emit('lazyImageReady', $slideEl[0], $imageEl[0]);
-        });
+                    if ($source.attr('data-srcset')) {
+                      $source.attr('srcset', $source.attr('data-srcset'));
+                      $source.removeAttr('data-srcset');
+                    }
+                  });
+                }
+                if (src) {
+                  $imageEl.attr('src', src);
+                  $imageEl.removeAttr('data-src');
+                }
+              }
 
-        swiper.emit('lazyImageLoad', $slideEl[0], $imageEl[0]);
-      });
+              $imageEl.addClass(params.loadedClass).removeClass(params.loadingClass);
+              $slideEl.find(("." + (params.preloaderClass))).remove();
+              if (swiper.params.loop && loadInDuplicate) {
+                var slideOriginalIndex = $slideEl.attr('data-swiper-slide-index');
+                if ($slideEl.hasClass(swiper.params.slideDuplicateClass)) {
+                  var originalSlide = swiper.$wrapperEl.children(("[data-swiper-slide-index=\"" + slideOriginalIndex + "\"]:not(." + (swiper.params.slideDuplicateClass) + ")"));
+                  swiper.lazy.loadInSlide(originalSlide.index(), false);
+                } else {
+                  var duplicatedSlide = swiper.$wrapperEl.children(("." + (swiper.params.slideDuplicateClass) + "[data-swiper-slide-index=\"" + slideOriginalIndex + "\"]"));
+                  swiper.lazy.loadInSlide(duplicatedSlide.index(), false);
+                }
+              }
+              swiper.emit('lazyImageReady', $slideEl[0], $imageEl[0]);
+            });
+
+            swiper.emit('lazyImageLoad', $slideEl[0], $imageEl[0]);
+          });
+      }, 0);
     },
     load: function load() {
       var swiper = this;
