@@ -503,6 +503,8 @@
     var i;
     if (arguments.length === 1) {
       if (typeof props === 'string') {
+          this[0].computedStyle = this[0].computedStyle || this.styles();
+          return this[0].computedStyle.getPropertyValue(props);
           /*
           if (this[0].style) {
               return this[0].style[props];
