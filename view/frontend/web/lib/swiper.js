@@ -4077,15 +4077,19 @@
       }
 
       if (swiper.params.preloadImages) {
-        swiper.preloadImages();
+          Utils.nextTick(() => {
+            swiper.preloadImages();
+          });
       }
 
       // Slide To Initial Slide
-      if (swiper.params.loop) {
-        swiper.slideTo(swiper.params.initialSlide + swiper.loopedSlides, 0, swiper.params.runCallbacksOnInit);
-      } else {
-        swiper.slideTo(swiper.params.initialSlide, 0, swiper.params.runCallbacksOnInit);
-      }
+      Utils.nextTick(() => {
+        if (swiper.params.loop) {
+          swiper.slideTo(swiper.params.initialSlide + swiper.loopedSlides, 0, swiper.params.runCallbacksOnInit);
+        } else {
+          swiper.slideTo(swiper.params.initialSlide, 0, swiper.params.runCallbacksOnInit);
+        }
+      });
 
       // Attach events
       swiper.attachEvents();
