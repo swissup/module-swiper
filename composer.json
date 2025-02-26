@@ -7,7 +7,7 @@
         "magento slider"
     ],
     "type": "magento2-module",
-    "version": "1.0.17",
+    "version": "1.0.18",
     "license": "MIT",
     "autoload": {
         "files": [ "registration.php" ],
