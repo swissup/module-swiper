@@ -4083,13 +4083,11 @@
       }
 
       // Slide To Initial Slide
-      Utils.nextTick(() => {
-        if (swiper.params.loop) {
-          swiper.slideTo(swiper.params.initialSlide + swiper.loopedSlides, 0, swiper.params.runCallbacksOnInit);
-        } else {
-          swiper.slideTo(swiper.params.initialSlide, 0, swiper.params.runCallbacksOnInit);
-        }
-      });
+      if (swiper.params.loop) {
+        swiper.slideTo(swiper.params.initialSlide + swiper.loopedSlides, 0, swiper.params.runCallbacksOnInit);
+      } else {
+        swiper.slideTo(swiper.params.initialSlide, 0, swiper.params.runCallbacksOnInit);
+      }
 
       // Attach events
       swiper.attachEvents();
