@@ -1,9 +1,9 @@
 define([
     'jquery',
-    '../lib/swiper',
     'mage/translate',
-    'Magento_Ui/js/modal/modal' // 2.3.3: create 'jquery-ui-modules/widget' dependency
-], function ($, Swiper, $t) {
+    '../lib/swiper',
+    'jquery-ui-modules/widget'
+], function ($, $t) {
     'use strict';
 
     var skipId = 1;
@@ -19,8 +19,9 @@ define([
                     lazyImageReady: this.updateSwiper.bind(this)
                 });
             }
+            this.options.containerModifierClass = 'swiper-container-';
 
-            new Swiper(this.element, this.options);
+            new window.Swiper(this.element[0], this.options);
 
             if ($(this.element).find('a,button').length) {
                 this.addSkipLink();

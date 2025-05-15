@@ -1,6 +1,6 @@
 {
     "name": "swissup/module-swiper",
-    "description": "Basic integration of Swiper v4 into Magento 2",
+    "description": "Basic integration of Swiper into Magento 2",
     "keywords": [
         "swiper",
         "carousel",

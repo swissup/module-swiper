@@ -43,7 +43,7 @@
 
             this.onReveal(() => {
                 require(['Swissup_Swiper/lib/swiper'], () => {
-                    new Swiper(this.element, this.options);
+                    new Swiper(this.element[0], this.options);
                 });
             });
         },

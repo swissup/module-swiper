@@ -4,6 +4,8 @@ Swiper - is the free and most modern mobile touch slider with hardware accelerat
 
 And it is as Magento 2 JS Widget.
 
+Swiper version 11.2.6.
+
 # Installation
 
 ```bash
@@ -49,4 +51,4 @@ Below you can find simple HTML markup to get Swiper slider at Magento 2 frontend
 </div>
 ```
 
-More details about options you can find at [Swiper API](https://swiperjs.com/api/).
+More details about options you can find at [Swiper API](https://swiperjs.com/swiper-api).

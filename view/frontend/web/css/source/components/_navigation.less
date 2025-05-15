@@ -3,6 +3,13 @@
         &.swiper-button {
             &-prev,
             &-next {
+                background-position: center;
+                background-repeat: no-repeat;
+
+                &::after {
+                    content: '';
+                }
+
                 .lib-css(background-size, @swiper-button__background-size);
                 .lib-css(height, @swiper-button__height);
                 .lib-css(width, @swiper-button__width);
@@ -69,4 +76,3 @@
         }
     }
 }
-
