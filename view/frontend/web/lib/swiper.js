@@ -7007,3 +7007,10 @@ var Swiper = (function () {
   return Swiper;
 
 })();
+
+if (typeof define === 'function' && define.amd && Swiper) {
+  define([], function () {
+      'use strict';
+      return Swiper;
+  });
+}

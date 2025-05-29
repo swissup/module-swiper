@@ -1,9 +1,9 @@
 define([
     'jquery',
     'mage/translate',
-    '../lib/swiper',
+    'Swissup_Swiper/lib/swiper',
     'jquery-ui-modules/widget'
-], function ($, $t) {
+], function ($, $t, Swiper) {
     'use strict';
 
     var skipId = 1;
@@ -21,7 +21,7 @@ define([
             }
             this.options.containerModifierClass = 'swiper-container-';
 
-            new window.Swiper(this.element[0], this.options);
+            new Swiper(this.element[0], this.options);
 
             if ($(this.element).find('a,button').length) {
                 this.addSkipLink();
