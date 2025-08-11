@@ -41,6 +41,8 @@
                 });
             }
 
+            this.options.containerModifierClass = 'swiper-container-';
+
             this.onReveal(() => {
                 require(['Swissup_Swiper/lib/swiper'], () => {
                     new Swiper(this.element[0], this.options);
